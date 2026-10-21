@@ -1,0 +1,70 @@
+{
+  "name": "4. Atualizar status",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "e56e25c6-d00e-40aa-83b6-4985aea910f1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        224,
+        528
+      ],
+      "id": "7c497612-7c27-4f90-ac0a-8f2f4c43f386",
+      "name": " Webhook Digitando...",
+      "webhookId": "e56e25c6-d00e-40aa-83b6-4985aea910f1"
+    },
+    {
+      "parameters": {
+        "resource": "chat-api",
+        "operation": "send-presence",
+        "instanceName": "={{ $json.body.instancia }}",
+        "remoteJid": "={{ $json.body.telefone }}",
+        "presence": "={{ $json.body.status }}",
+        "delay": 20000
+      },
+      "type": "n8n-nodes-evolution-api.evolutionApi",
+      "typeVersion": 1,
+      "position": [
+        464,
+        528
+      ],
+      "id": "bde2abf2-2a4d-4b9a-a8a9-6fcda1d18817",
+      "name": "Atualizar status",
+      "credentials": {
+        "evolutionApi": {
+          "id": "AnLJ3FMLLPG28SGY",
+          "name": "Evolution"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    " Webhook Digitando...": {
+      "main": [
+        [
+          {
+            "node": "Atualizar status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "9e9daa65-17b1-445b-9217-fb559c35d27b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "95efa5ab6a4339c7b600e395ba84f052025d1ae01bca7e608fe2fcab87b97138"
+  },
+  "id": "JLZjfpnHt9ydTqgi",
+  "tags": []
+}
